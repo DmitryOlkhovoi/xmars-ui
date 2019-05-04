@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "stylesPrettier": "prettier --write styles/**/*.scss",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "parcel": "^1.12.3"
   },
   "devDependencies": {
+    "prettier": "1.17.0",
     "sass": "^1.19.0"
   }
 }

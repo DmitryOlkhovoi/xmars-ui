@@ -1,0 +1,8 @@
+// Text class and color classes inside
+.#{$class-prefix}text {
+    @each $name, $color in $colors {
+        &.#{$name} {
+            color: $color;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+$button-border-radius-levels: (
+    "0": 10px,
+    "1": 15px
+);
+
+// Resets browser default styles
+@mixin button-reset {
+  background: none;
+  outline: none;
+  color: $black; // Safari has white color on hover
+
+  &:active {
+    border-style: solid;
+  }
+}
+
+// Basic button style
+@mixin button {
+  @include button-reset;
+
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+// Fills button with a backgound color
+@mixin button-fill($color) {
+  background-color: $color;
+  color: $white;
+}
+
+// Basic button color
+@mixin button-color($color) {
+  border-color: $color;
+
+  &:hover {
+    color: $color;
+  }
+
+  &.#{$class-prefix}fill,
+  &.#{$class-prefix}hover-fill:hover {
+    @include button-fill($color);
+  }
+}
+
+// Makes a class with button color
+@mixin button-color-class($name, $color) {
+  &.#{$name} {
+    @include button-color($color);
+  }
+}
+
+// Create button color classes
+@mixin button-color-classes($colors) {
+  @each $name, $color in $colors {
+    @include button-color-class($name, $color);
+  }
+}
+
+// Create button radius classes
+@mixin button-border-radius-classes($levels) {
+    @each $level, $radius in $levels {
+        &.rounded-#{$level} {
+            border-radius: $radius;
+        }
+    }
+}
+
+// Button class
+button.#{$class-prefix}btn {
+  @include button;
+  @include button-color-classes($colors);
+  @include button-border-radius-classes($button-border-radius-levels);
+}
